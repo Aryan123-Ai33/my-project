@@ -1,0 +1,6 @@
+i have learned to make a resposinve banking UI with deposit/withdraw buttons and diplay the balance of the deposit entered by the user 
+i have leaned about the box model use in the experiment use of paddding and margin border content
+i have leaned about the use of diffrent colurs in backgorunf using style csss 
+i have leaned about the structuring and aligning the box column and the spacing between them
+i have added the diffrent colours boxes for the deposit and withdraw which helps to diffrentiate the between them and make them out to see them in the box
+i have also added the shadow for the boxes when the cursor move on them 

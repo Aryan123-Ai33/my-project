@@ -1,0 +1,57 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background-color: #f0f2f5; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.banking-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    text-align: center;
+    width: 90%;
+    max-width: 320px; 
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; 
+}
+.balance {
+    margin: 0 auto; 
+    background-color: #e6f4ea; 
+    border-radius: 50%; 
+    width: 100px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.balance p {
+    color: #87d30d; 
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 0;
+}
+.btn {
+    border: none;
+    border-radius: 5px;
+    padding: 1rem;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.deposit {
+    background-color: #191097; 
+}
+.withdraw {
+    background-color: #0fb1b1; 
+}
+.btn:hover {
+    opacity: 0.9;
+}
