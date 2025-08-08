@@ -1,0 +1,88 @@
+ADMIN DASHBOARD DESCRIPTION, CSS BREAKDOWN, AND USAGE NOTES
+
+ELEMENT: .app (Main Dashboard Wrapper)
+Requirement:
+Should take full height of the page.
+Stack header, main content, and footer vertically.
+Properties:
+min-height: 100vh; → makes it fill the full browser height.
+display: flex; flex-direction: column; → stacks elements top to bottom.
+Effect:
+Acts as the main wrapper containing all sections of the dashboard.
+
+ELEMENT: .topbar (Top Header Bar)
+Requirement:
+The top bar shows the title and the Dark Mode toggle.
+Properties:
+background: var(--topbar-bg); color: var(--topbar-text); → uses CSS variables for light/dark mode colors.
+display: flex; align-items: center; justify-content: space-between; → keeps title on left, toggle on right.
+padding: 10px 12px; → gives space around items.
+Title (h1) → font-size: 22px; margin: 0; for compact look.
+Effect:
+Creates a consistent, adjustable top bar that changes style for Dark Mode.
+
+ELEMENT: .toggle (Dark Mode Switch)
+Requirement:
+A control to toggle between light and dark themes.
+Properties:
+Uses modern :root:has(#themeToggle:checked) to swap theme colors with CSS variables.
+display: inline-flex; align-items: center; gap: 8px; → aligns checkbox and label nicely.
+cursor: pointer; user-select: none; → makes it click-friendly.
+Effect:
+Lets users switch themes instantly without JavaScript.
+
+ELEMENT: .main (Main Content Layout)
+Requirement:
+Organizes sidebar and content side by side.
+Properties:
+display: grid; grid-template-columns: 160px 1fr; → sidebar fixed width, content flexible.
+min-height: calc(100vh - 90px); → fills remaining screen height after header/footer.
+Effect:
+Keeps a clean two-column layout for desktop screens.
+
+ELEMENT: .side (Sidebar Navigation)
+Requirement:
+Navigation menu on the left.
+Properties:
+background: var(--side-bg); → changes color depending on theme.
+padding: 14px 12px; → spacing inside the sidebar.
+ul → removes default margin, adds padding left for list items.
+a → purple text (#5a2ca0) with underline for visibility.
+Effect:
+Separates navigation area visually from the main content.
+
+ELEMENT: .content (Main Content Area)
+Requirement:
+Area where main admin content is displayed.
+Properties:
+padding: 20px 18px; → comfortable spacing.
+h2 → margin-top: 12px; font-size: 18px;
+p → color: var(--muted); margin-top: 12px; → muted secondary text color.
+Effect:
+Clean, readable main working area.
+
+ELEMENT: .bottombar (Footer)
+Requirement:
+Bottom bar showing copyright.
+Properties:
+background: var(--topbar-bg); color: var(--topbar-text); → same style as header for consistency.
+text-align: center; padding: 8px 12px;
+Effect:
+Visually closes the layout with matching design.
+
+DARK MODE STYLING
+Requirement:
+Change page theme colors without reloading or JavaScript.
+Details:
+Trigger: #themeToggle:checked in .toggle.
+Backgrounds → switch from light (#ffffff) to dark (#0f0f0f).
+Text → light gray in dark mode.
+Sidebar background → darker shade in dark mode.
+Effect:
+Makes the dashboard easier on the eyes at night.
+
+LEARNING POINTS
+How to build a full-page dashboard with header, sidebar, main content, and footer.
+Using CSS variables + :has() for a no-JS dark mode.
+How CSS Grid creates a sidebar + content layout.
+Responsiveness needs to be added for better mobile support.
