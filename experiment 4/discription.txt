@@ -1,0 +1,55 @@
+LIVE CHARACTER COUNTER TEST CASES & VALIDATIONS
+1. FIELD: Textarea Input
+Requirement: User can enter any characters, including letters, numbers, spaces, and special characters.
+Validation: No restrictions on input content or length for this example (can be empty or filled).
+VALID INPUTS:
+"" (empty)
+"Hello java!"
+"32461"
+"!@#$%^&*()"
+Multiple lines of text
+INVALID INPUTS:
+None (no input restrictions applied)
+
+2. LIVE CHARACTER COUNT DISPLAY
+Requirement: The character counter should update in real time as the user types or deletes text.
+Validation: The displayed character count must exactly match the length of the text currently in the textarea.
+
+TEST CASES:
+Start with empty textarea, count shown is 0
+Type single character, count updates to 1
+Type multiple characters quickly, count updates accordingly
+Delete characters, count decreases accordingly
+Copy-paste long text, count updates to the total character count of pasted text
+Include line breaks and spaces, all counted correctly
+
+3. HTML & JavaScript Behavior
+Requirement:
+The <textarea> has attributes rows=5 and cols=50 for size.
+Placeholder text "Start typing..." shown when empty.
+Character count updated via JavaScript event listener on input event.
+
+CODE STRUCTURE & ELEMENT OVERVIEW
+1. ELEMENT: <textarea>
+Purpose: Input area for user text entry
+Attributes:
+id="liveTextarea" — for script access
+rows="5" and cols="50" — visual size of the input area
+placeholder="Start typing..." — gray hint text when empty
+
+2. ELEMENT: <span id="charCount">
+Purpose: Displays the current number of characters entered
+Initial content: 0
+
+3. SCRIPT
+Function: Adds an event listener on the textarea that updates the charCount span with the length of the textarea’s value whenever input changes (typing, deleting, pasting)
+Key code:
+javascript
+textarea.addEventListener('input', function() {
+  charCount.textContent = textarea.value.length;
+});
+
+LEARNING OUTCOMES:
+How to create a live character counting feature 
+learned how to Use of input event listener
+learned about the live dynamically total count
