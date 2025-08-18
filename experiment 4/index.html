@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Test Case 11 - Live Character Counter</title>
+</head>
+<body>
+  <h2>Live Character Counter</h2>
+  <textarea id="liveTextarea" rows="5" cols="50" placeholder="Start typing..."></textarea>
+  <p><strong>Number of Characters:</strong> <span id="charCount">0</span></p>
+  <script>
+    var textarea = document.getElementById('liveTextarea');
+    var charCount = document.getElementById('charCount');
+    textarea.addEventListener('input', function() {
+      charCount.textContent = textarea.value.length;
+    });
+  </script>
+</body>
+</html>
