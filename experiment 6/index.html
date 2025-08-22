@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Canvas Drawing Tool</title>
+  <style>
+    .container {
+      border: 2px solid #222;
+      margin: 24px;
+      padding: 10px;
+      width: 650px;
+      background: #fff;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    canvas {
+      background: #f9f9f9;
+      border: 2px solid #555;
+      cursor: crosshair;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Canvas Drawing Tool</h2>
+    <canvas id="drawing-canvas" width="600" height="350"></canvas>
+  </div>
+  <script>
+    const canvas = document.getElementById('drawing-canvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let isInsideCanvas = false;
+    let lastX = 0;
+    let lastY = 0;
+    function handleMouseDown(e) {
+      if (isInsideCanvas) {
+        isDrawing = true;
+        const rect = canvas.getBoundingClientRect();
+        lastX = e.clientX - rect.left;
+        lastY = e.clientY - rect.top;
+      }
+    }
+    function handleMouseMove(e) {
+      if (!isInsideCanvas) return;
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+      if (isDrawing) {
+        ctx.beginPath();
+        ctx.strokeStyle = 'dodgerblue';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.stroke();
+        ctx.closePath();
+        lastX = mouseX;
+        lastY = mouseY;
+      }
+    }
+    function handleMouseUp() {
+      isDrawing = false;
+    }
+    function handleMouseEnter() {
+      isInsideCanvas = true;
+    }
+    function handleMouseLeave() {
+      isInsideCanvas = false;
+      isDrawing = false; 
+    }
+    canvas.addEventListener('mousedown', handleMouseDown);
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseup', handleMouseUp);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
+    canvas.addEventListener('mouseenter', handleMouseEnter);
+  </script>
+</body>
+</html>

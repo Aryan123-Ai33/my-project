@@ -1,0 +1,112 @@
+<!DOCTYPE html> <!-- Declares HTML5 document -->
+<html lang="en"> <!-- Sets page language to English -->
+<head>
+  <meta charset="UTF-8" /> <!-- Sets character encoding -->
+  <title>Canvas Drawing Tool</title> <!-- Title visible on browser tab -->
+  <style>
+    .container {
+      border: 2px solid #222; /* Border around container */
+      margin: 24px;
+      padding: 10px;
+      width: 650px;
+      background: #fff;
+    }
+    h2 {
+      margin-top: 0;
+    }
+    canvas {
+      background: #f9f9f9; /* Light gray background for canvas */
+      border: 2px solid #555; /* Border around canvas */
+      cursor: crosshair; /* Cursor changes on hover */
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="container"> <!-- Container to hold canvas and heading -->
+    <h2>Canvas Drawing Tool</h2> <!-- Heading of the tool -->
+    <canvas id="drawing-canvas" width="600" height="350"></canvas> <!-- Drawing area -->
+  </div>
+
+  <script>
+    const canvas = document.getElementById('drawing-canvas'); // Get canvas element
+    const ctx = canvas.getContext('2d'); // Get 2D drawing context
+
+    let isDrawing = false; // To track if mouse is pressed
+    let isInsideCanvas = false; // To track if mouse is inside canvas
+    let lastX = 0; // Last known mouse X position
+    let lastY = 0; // Last known mouse Y position
+
+    // Function called when mouse button is pressed down on canvas
+    function handleMouseDown(e) {
+      if (isInsideCanvas) {
+        isDrawing = true; // Start drawing
+        const rect = canvas.getBoundingClientRect();
+        lastX = e.clientX - rect.left; // Calculate mouse X inside canvas
+        lastY = e.clientY - rect.top;  // Calculate mouse Y inside canvas
+      }
+    }
+
+    // Function called when mouse moves over the canvas
+    function handleMouseMove(e) {
+      if (!isInsideCanvas) return; // Ignore moves outside canvas
+
+      const rect = canvas.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left; // Current mouse X inside canvas
+      const mouseY = e.clientY - rect.top;  // Current mouse Y inside canvas
+
+      if (isDrawing) {
+        // Draw line from last position to current mouse position
+        ctx.beginPath();
+        ctx.strokeStyle = 'dodgerblue';
+        ctx.lineWidth = 2;
+        ctx.lineCap = 'round';
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(mouseX, mouseY);
+        ctx.stroke();
+        ctx.closePath();
+
+        lastX = mouseX; // Update last X
+        lastY = mouseY; // Update last Y
+      }
+      // If not drawing, do nothing on move
+    }
+
+    // Function called when mouse button is released
+    function handleMouseUp() {
+      isDrawing = false; // Stop drawing
+    }
+
+    // Function called when mouse enters canvas area
+    function handleMouseEnter() {
+      isInsideCanvas = true; // Mark mouse inside canvas
+    }
+
+    // Function called when mouse leaves canvas area
+    function handleMouseLeave() {
+      isInsideCanvas = false; // Mouse no longer inside
+      isDrawing = false;      // Stop drawing if drawing in progress
+    }
+
+    // Add all event listeners to the canvas
+    canvas.addEventListener('mousedown', handleMouseDown);
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseup', handleMouseUp);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
+    canvas.addEventListener('mouseenter', handleMouseEnter);
+  </script>
+</body>
+</html>
+
+Leaned in the experiment
+Created a webpage with a single <canvas> element for drawing.
+Used JavaScript event listeners for mouse events on the canvas: mousedown, mousemove, mouseup, mouseenter, and mouseleave.
+When mouse is inside the canvas and pressed down, drawing mode starts (isDrawing = true).
+While moving mouse with button down, lines are drawn following the cursor position.
+When mouse button is released or leaves the canvas, drawing stops.
+If mouse is outside the canvas or not pressed, no drawing occurs.
+Used the canvas 2D context to draw smooth lines with stroke color and width.
+Implemented separate functions for handling each mouse event to keep code clean and organized.
+Learned how to track mouse position relative to canvas using getBoundingClientRect() and adjust coordinates.
+Understood controlling drawing only inside canvas boundaries by tracking mouse enter and leave events.
+Gained experience integrating multiple mouse events to enable interactive drawing on canvas without reloading the page.

@@ -1,0 +1,85 @@
+<!DOCTYPE html> <!-- This tells the browser that the document is an HTML5 page -->
+<html lang="en"> <!-- The main HTML tag with language set as English -->
+<head> <!-- Contains information about the document -->
+  <meta charset="UTF-8" /> <!-- Sets the character encoding to UTF-8 for all texts -->
+  <title>Dynamic Product Filter with Dropdown using JavaScript DOM Manipulation</title> <!-- Title shown on browser tab -->
+</head>
+<body> <!-- Everything visible on the webpage goes inside this tag -->
+  <div class="container"> <!-- Container box to group content and apply styles -->
+    <h3>Product List</h3> <!-- Heading shown above the product list -->
+
+    <label for="category">Filter by Category: </label> <!-- Label describing the dropdown -->
+
+    <select id="category"> <!-- Dropdown menu for selecting product category -->
+      <option value="All">All</option> <!-- Option to show all products -->
+      <option value="Shoes">Shoes</option> <!-- Option to filter products in Shoes category -->
+      <option value="Clothing">Clothing</option> <!-- Option to filter Clothing -->
+      <option value="Electronics">Electronics</option> <!-- Option to filter Electronics -->
+      <option value="Books">Books</option> <!-- Option to filter Books -->
+    </select>
+
+    <div id="product-list"></div> <!-- Empty div where filtered products will be displayed -->
+  </div>
+
+  <script>
+    // An array storing product objects with product name and category
+    const products = [
+      { name: "Running Shoes", category: "Shoes" },  // Product in Shoes category
+      { name: "Sneakers", category: "Shoes" },       // Another Shoes product
+      { name: "T-Shirt", category: "Clothing" },     // Product in Clothing
+      { name: "Jeans", category: "Clothing" },       // Another Clothing product
+      { name: "Smartphone", category: "Electronics" }, // Electronic product
+      { name: "Headphones", category: "Electronics" }, // Another Electronics product
+      { name: "Novel", category: "Books" },           // Book product
+      { name: "Cookbook", category: "Books" }         // Another Book product
+    ];
+
+    // Get reference to dropdown element
+    const categorySelect = document.getElementById("category");
+
+    // Get reference to container where products will be shown
+    const productList = document.getElementById("product-list");
+
+    // Function to show products filtering by category
+    function showProducts(category) {
+      productList.innerHTML = ""; // Clear existing list
+
+      // Filter products by category; if "All" selected, show all
+      const filteredProducts = category === "All"
+        ? products
+        : products.filter(function (product) {
+            return product.category === category; // Only products matching category
+          });
+
+      // For each filtered product, create a div and add it to the container
+      filteredProducts.forEach(function (product) {
+        const productDiv = document.createElement("div"); // Create div element
+        productDiv.classList.add("product"); // Add CSS class for styling
+        productDiv.textContent = product.name; // Insert product name text
+        productList.appendChild(productDiv); // Append the div to product list container
+      });
+    }
+
+    showProducts("All"); // Show all products when page loads
+
+    // Update shown products when dropdown selection changes
+    categorySelect.addEventListener("change", function () {
+      showProducts(this.value); // Pass selected category to showProducts
+    });
+  </script>
+</body>
+</html>
+
+Leaned in the experiment
+Made a webpage with a list of products and a dropdown menu to filter products by category.
+Used HTML to add a dropdown with options like Shoes, Clothing, Electronics, and Books.
+Created a list of products in JavaScript using objects with name and category.
+Added the books "Novel" and "Cookbook" to the product list and added "Books" to the dropdown.
+Used JavaScript’s .filter() to choose products that match the selected category.
+Showed all products when "All" is selected.
+Added code to listen for dropdown changes and update the product list right away.
+Used JavaScript to create and show product items on the page dynamically.
+Made sure all products show when the page loads first.
+Learned how to change content on the page without reloading it.
+Learned it’s important to include all categories in both the product list and dropdown for the filter to work well.
+Learned how to combine HTML, CSS, and JavaScript to make a simple interactive webpage.
