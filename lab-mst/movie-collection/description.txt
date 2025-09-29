@@ -1,0 +1,25 @@
+Experiment: Movie Collection App using React
+
+In this experiment, I created a simple Movie Collection app using React and Vite.
+The goal was to build a frontend application where users can manage their personal movie collection by adding and removing movies.
+
+I started by setting up a new React project with Vite, which made it easy to get started quickly.
+ Then, I created a Collection component that handles the main functionality.
+
+The app uses React's useState hook to manage the list of movies and the form inputs. 
+Each movie has an id, title, genre, and rating. I initialized the state with two sample movies: "Conjuring" (Horror, 7.9) and "Interstellar" (Sci-Fi, 8.6).
+
+For adding movies, I made a form with inputs for title, genre, and rating. 
+When the user submits the form, it validates the inputs (rating must be a number between 0 and 10) and adds the new movie to the list. 
+The form clears after adding.
+
+To display the movies, I used a list where each movie shows its details and a remove button. 
+Clicking remove deletes that movie from the collection.
+
+I learned how to handle forms in React, manage state with hooks, and perform basic validation. 
+Also, I got better at structuring components and using event handlers.
+
+To run the app, I used npm install to install dependencies, then npm run dev to start the development server. 
+The app opens in the browser and works interactively.
+
+This experiment helped me understand building simple CRUD operations in a React frontend without a backend.
