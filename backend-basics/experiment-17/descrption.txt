@@ -1,0 +1,33 @@
+Experiment 17: Implementing JWT Authentication in Express.js
+
+Hey, so for this experiment, I had to work on setting up JWT (JSON Web Tokens) authentication in an Express.js server. It was pretty cool because it builds on the previous experiments where we did basic auth with Bearer tokens.
+
+What I did:
+- Set up an Express server with body-parser for handling JSON requests
+- Used jsonwebtoken library to generate and verify tokens
+- Created a login endpoint that generates a JWT upon successful authentication
+- Implemented middleware to verify JWT on protected routes
+- Added a protected route that requires a valid JWT to access
+
+Technologies Used:
+- Node.js
+- Express.js
+- jsonwebtoken
+- body-parser
+
+How to Run:
+1. Go to the experiment-17 folder
+2. Run npm install to install dependencies
+3. Start the server with node server.js
+4. It should run on localhost:3000
+
+API Endpoints:
+- POST /login: Send username and password to get a JWT token
+- GET /protected: Access this route with Authorization header containing Bearer <token>
+
+Challenges I faced:
+- Figuring out how to sign and verify tokens
+- Handling token expiration
+- Making sure the middleware correctly checks for valid tokens
+
+Overall, this experiment helped me understand how JWT works for stateless authentication in web apps.

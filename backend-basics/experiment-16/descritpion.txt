@@ -1,0 +1,61 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment 16: Express.js Server with Middleware, Authentication, and CRUD Operations
+
+This experiment demonstrates the implementation of a basic Express.js server with various middleware functions, authentication, and CRUD operations for user management. It showcases how to build a RESTful API with security features.
+
+Key Features:
+- Express.js server setup with ES6 modules
+- Custom authentication middleware using Bearer token
+- Logging middleware for request tracking
+- CRUD operations for users (Create, Read, Update, Delete)
+- Protected admin routes with authentication
+- Modular routing using Express Router
+
+Technologies Used:
+- Node.js
+- Express.js
+
+How to Run:
+1. Navigate to the experiment-16 directory
+2. Install dependencies: npm install
+3. Start the server: node server.js
+4. Server runs on http://localhost:3000
+
+API Endpoints:
+- POST /users: Add a new user
+- GET /users: Retrieve all users
+- PUT /users/:id: Update a user by ID
+- DELETE /users/:id: Delete a user by ID
+- GET /admin/dashboard: Access admin dashboard (requires Bearer token: mysecrettoken)
+
+Middleware:
+- Authentication middleware for admin routes
+- Request logging middleware
+- JSON parsing middleware
+
+This experiment illustrates fundamental concepts in backend development including middleware usage, authentication, and REST API design.
