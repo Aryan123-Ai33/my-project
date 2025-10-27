@@ -1,0 +1,101 @@
+
+
+ DESCRIPTION OF EXPERIMENT:
+
+
+
+A. Express Server Setup:
+
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const jwt = require('jsonwebtoken');
+
+const app = express();
+app.use(bodyParser.json());
+
+const JWT_SECRET = 'your_secret_key';
+const PORT = 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
+});
+----------------------------------------------------------------------------------------------------> CODE BLOCK
+
+
+Explanation:
+
+Express.js is initialized to create the backend server.
+`bodyParser.json()` middleware is used to parse incoming JSON requests.
+A secret key is defined for signing JWTs.
+The server listens on port 3000, ready to accept requests.
+
+--------------------------------------------------------------------------------------------------------> EXPLANATION BLOCK
+
+
+B. Login Route:
+
+
+const sampleUser = { username: 'testuser', password: 'password123' };
+
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
+  if (username === sampleUser.username && password === sampleUser.password) {
+    const payload = { username: sampleUser.username };
+    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '1h' });
+    return res.json({ message: 'Login successful', token });
+  }
+  res.status(401).json({ message: 'Invalid username or password' });
+});
+-----------------------------------------------------------------------------------------------------> CODE BLOCK
+
+
+Explanation:
+
+This route allows a user to log in using hardcoded credentials.
+If the credentials match, a JWT token is generated and returned.
+If invalid, a 401 Unauthorized error is sent.
+This token will be used to access protected routes.
+-----------------------------------------------------------------------------------------------> EXPLANATION BLOCK
+
+
+C. JWT Verification Middleware:
+
+
+function authenticateToken(req, res, next) {
+  const authHeader = req.headers['authorization'];
+  const token = authHeader && authHeader.split(' ')[1];
+  if (!token) return res.status(401).json({ message: 'Access token missing' });
+
+  jwt.verify(token, JWT_SECRET, (err, user) => {
+    if (err) return res.status(403).json({ message: 'Invalid or expired token' });
+    req.user = user;
+    next();
+  });
+}
+```--------------------------------------------------------------------------------------------------> CODE BLOCK
+
+Explanation:
+
+This middleware verifies the JWT sent in the Authorization header.
+If the token is missing, it returns a 401 error.
+If the token is invalid or expired, it returns a 403 error.
+Valid tokens attach user info to the request object and allow access to protected routes.
+--------------------------------------------------------------------------------------------------------------> EXPLANATION BLOCK
+
+
+D. Protected Route:
+
+app.get('/protected', authenticateToken, (req, res) => {
+  res.json({ message: `Hello ${req.user.username}, you have access to this protected route!` });
+});
+```
+
+Explanation:
+
+This route can only be accessed with a valid JWT.
+It demonstrates how protected resources are secured using token-based authentication.
+Authorized users receive a personalized success message; unauthorized requests are blocked.
+
+-------------------------------------------------------------------------------------------------------> EXPLANATION BLOCK
+
+
