@@ -1,0 +1,180 @@
+Experiment Description
+Title:
+Person Class Hierarchy with Student and Teacher Subclasses
+
+Objective:
+The purpose of this experiment is to understand and apply the concept of inheritance in JavaScript using ES6 classes. By creating a base class (Person) and extending it into specialized subclasses (Student and Teacher), you will learn how object-oriented programming (OOP) principles like code reusability, constructor chaining, and method overriding are implemented in modern JavaScript.
+
+This experiment demonstrates how to:
+- Create a base class with common properties and methods.
+- Extend the base class to create child classes with additional, specific properties.
+- Override methods in subclasses to customize their behavior.
+
+1. Component Breakdown: Class Hierarchy Structure
+The experiment consists of three classes arranged in a hierarchical relationship:
+    Person (Base Class)
+    /            \
+Student          Teacher
+
+1.1 Base Class: Person
+Requirement:
+Create a foundational class that holds general attributes and methods applicable to all people.
+
+Properties:
+- name → The person's name.
+- age → The person's age.
+
+Methods:
+- displayInfo() → Prints the basic details (name and age) of a person.
+
+Purpose:
+The base class serves as the blueprint for other specialized classes like Student and Teacher.
+
+1.2 Subclass: Student
+Extends: Person using the extends keyword.
+
+Additional Property:
+- grade → Represents the grade or class level of the student.
+
+Method Overriding:
+Redefines the displayInfo() method to include grade along with the basic information.
+
+Example Output:
+Student Name: Alice, Age: 20, Grade: A
+
+1.3 Subclass: Teacher
+Extends: Person using the extends keyword.
+
+Additional Property:
+- subject → Represents the subject or department the teacher specializes in.
+
+Method Overriding:
+Redefines the displayInfo() method to include subject along with the basic information.
+
+Example Output:
+Teacher Name: Mr. Smith, Age: 40, Subject: Mathematics
+
+2. Implementation Details
+2.1 Constructor Chaining
+Each subclass (Student and Teacher) calls the base class constructor using super(). This ensures that the shared properties name and age are initialized before adding subclass-specific properties.
+
+Example:
+constructor(name, age, grade) {
+  super(name, age); // Initializes shared properties
+  this.grade = grade; // Adds student-specific property
+}
+
+2.2 Method Overriding
+The displayInfo() method in both Student and Teacher overrides the one defined in Person. This allows each subclass to customize the way information is displayed.
+
+2.3 Creating Instances
+Finally, we create instances of:
+- Person → For general individuals.
+- Student → Representing a student with name, age, and grade.
+- Teacher → Representing a teacher with name, age, and subject.
+
+Calling displayInfo() on each instance demonstrates polymorphism — the same method name behaves differently depending on the object type.
+
+3. Code Walkthrough
+3.1 Person Class
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+
+  displayInfo() {
+    console.log(`Name: ${this.name}, Age: ${this.age}`);
+  }
+}
+
+Initializes shared attributes. Contains a general-purpose displayInfo() method.
+
+3.2 Student Class
+class Student extends Person {
+  constructor(name, age, grade) {
+    super(name, age); 
+    this.grade = grade;
+  }
+
+  displayInfo() {
+    console.log(`Student Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`);
+  }
+}
+
+Adds the grade property. Overrides displayInfo() to include grade details.
+
+3.3 Teacher Class
+class Teacher extends Person {
+  constructor(name, age, subject) {
+    super(name, age);
+    this.subject = subject;
+  }
+
+  displayInfo() {
+    console.log(`Teacher Name: ${this.name}, Age: ${this.age}, Subject: ${this.subject}`);
+  }
+}
+
+Adds the subject property. Overrides displayInfo() to include subject details.
+
+3.4 Creating and Testing Instances
+const student1 = new Student("Alice", 20, "A");
+const teacher1 = new Teacher("Mr. Smith", 40, "Mathematics");
+const person1 = new Person("John Doe", 30);
+
+student1.displayInfo();  // Student Name: Alice, Age: 20, Grade: A
+teacher1.displayInfo();  // Teacher Name: Mr. Smith, Age: 40, Subject: Mathematics
+person1.displayInfo();   // Name: John Doe, Age: 30
+
+4. Expected Output
+Student Name: Alice, Age: 20, Grade: A
+Teacher Name: Mr. Smith, Age: 40, Subject: Mathematics
+Name: John Doe, Age: 30
+
+This confirms:
+- Inheritance works properly.
+- Each subclass correctly overrides the parent class method.
+- Polymorphism is demonstrated through different outputs for the same displayInfo() method.
+
+5. Key Concepts Demonstrated
+Concept            Explanation
+Inheritance        Student and Teacher inherit common properties and methods from Person.
+Constructor Chaining  super() is used in subclasses to initialize parent class properties.
+Method Overriding  Subclasses redefine displayInfo() to include their unique attributes.
+Polymorphism       The same method behaves differently depending on the object type.
+Code Reusability   Shared logic is written once in the base class and reused across subclasses.
+
+6. Visual Representation of Class Hierarchy
+    +------------+
+    |   Person   |
+    |------------|
+    | name       |
+    | age        |
+    |------------|
+    | displayInfo|
+    +------------+
+       /     \
+      /       \
++---------------+  +---------------+
+|    Student    |  |    Teacher    |
+|---------------|  |---------------|
+| grade         |  | subject       |
+|---------------|  |---------------|
+| displayInfo() |  | displayInfo() |
++---------------+  +---------------+
+
+7. Learning Outcomes 🎓
+By completing this experiment, learners will:
+- Gain hands-on experience with ES6 class syntax in JavaScript.
+- Understand the principles of inheritance and method overriding.
+- Learn to use super() to call the parent class constructor.
+- Build real-world applicable structures such as student-teacher management systems.
+- Appreciate the importance of code reusability and maintainability in OOP.
+
+8. Real-World Applications
+Domain            Application Example
+Education Systems Managing students, teachers, and staff data.
+E-commerce        Creating product hierarchies (e.g., Product → Clothing → Shirt).
+HR Management     Modeling employees, managers, and departments.
+Healthcare Systems Representing patients, doctors, and nurses.

@@ -1,0 +1,33 @@
+.product-card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px;
+  width: 250px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  background-color: #fff;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+}
+
+.product-price {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+/* Style for 'In Stock' status */
+.in-stock {
+  color: green;
+  font-weight: bold;
+}
+
+/* Style for 'Out of Stock' status */
+.out-of-stock {
+  color: red;
+  font-weight: bold;
+}   
