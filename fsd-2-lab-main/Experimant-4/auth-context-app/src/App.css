@@ -46,13 +46,13 @@ input[type="text"] {
 
 input[type="text"]:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  border-color: #28a745;
+  box-shadow: 0 0 0 2px rgba(40, 167, 69, 0.25);
 }
 
 /* Button Styles */
 button {
-  background-color: #007bff;
+  background-color: #28a745;
   color: white;
   border: none;
   padding: 0.75rem 1.5rem;
@@ -64,11 +64,11 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #218838;
 }
 
 button:active {
-  background-color: #004085;
+  background-color: #1e7e34;
 }
 
 /* Dashboard Styles */
