@@ -1,25 +1,16 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense } from 'react';
+import Text from './Text';
 
- const User = lazy(() => import('./User'));
+const Image = lazy(() => import('./Image'));
 
 function App() {
-  const [load, setLoad] = useState(false);
-
   return (
     <div>
-      <h1>Lazy Loading</h1>
-
-      <button onClick={() => setLoad(true)}>
-        Load User
-      </button>
-
-      {
-        load ? (
-          <Suspense fallback={<h3>loading...</h3>}>
-            <User />
-          </Suspense>
-        ) : null
-      }
+      <h1>React App with Lazy Loaded Image and Immediate Text</h1>
+      <Text />
+      <Suspense fallback={<h3>Loading image...</h3>}>
+        <Image />
+      </Suspense>
     </div>
   );
 }
