@@ -1,12 +1,13 @@
-import Login from './login.jsx'
-import './App.css'
 
+import './App.css';
+import Login from './Login'
 function App() {
+  const data = true;
   return (
-    <div>
-      <Login />
+    <div className="App">
+     <Login />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
